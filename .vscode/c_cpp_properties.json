@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/jazzy/include/**",
+        "/home/jalma/Workspaces/ros2_ws/src/Navigation/cerberus_ws/mapping/include/**",
+        "/home/jalma/Workspaces/ros2_ws/src/Navigation/cerberus_ws/navigation_bringup/image_padding/include/**",
+        "/home/jalma/Workspaces/ros2_ws/src/Navigation/cerberus_ws/navigation_bringup/realsense_splitter_ros/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
