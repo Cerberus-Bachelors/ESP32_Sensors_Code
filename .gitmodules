@@ -4,3 +4,9 @@
 [submodule "ESP32_Code/esp32-arduino-lib-builder"]
 	path = ESP32_Code/esp32-arduino-lib-builder
 	url = https://github.com/Cerberus-Bachelors/esp32-arduino-lib-builder.git
+[submodule "ESP32_Code/components/MMC5983MA/SparkFun_MMC5983MA_Magnetometer_Arduino_Library"]
+	path = ESP32_Code/components/MMC5983MA/SparkFun_MMC5983MA_Magnetometer_Arduino_Library
+	url = https://github.com/sparkfun/SparkFun_MMC5983MA_Magnetometer_Arduino_Library.git
+[submodule "ESP32_Code/components/ISM330DHCX/SparkFun_6DoF_ISM330DHCX_Arduino_Library"]
+	path = ESP32_Code/components/ISM330DHCX/SparkFun_6DoF_ISM330DHCX_Arduino_Library
+	url = https://github.com/sparkfun/SparkFun_6DoF_ISM330DHCX_Arduino_Library.git
