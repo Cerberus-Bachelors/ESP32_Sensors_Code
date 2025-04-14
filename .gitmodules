@@ -1,6 +1,6 @@
-[submodule "ESP32_Code/ESP32_Code/components/arduino"]
-	path = ESP32_Code/ESP32_Code/components/arduino
-	url = https://github.com/espressif/arduino-esp32.git
 [submodule "ESP32_Code/components/arduino"]
 	path = ESP32_Code/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
+[submodule "ESP32_Code/esp32-arduino-lib-builder"]
+	path = ESP32_Code/esp32-arduino-lib-builder
+	url = https://github.com/espressif/esp32-arduino-lib-builder.git
