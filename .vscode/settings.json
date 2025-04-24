@@ -4,5 +4,31 @@
     ],
     "python.analysis.extraPaths": [
         "/opt/ros/jazzy/lib/python3.12/site-packages"
-    ]
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/libraries/**",
+        "${workspaceFolder}/ESP32_Code/components/**",
+        "${workspaceFolder}/**"
+    ],
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "files.associations": {
+        "vector": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "format": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
+    }
+
+
+    
 }
