@@ -10,6 +10,7 @@
 #define sda_pin1 23
 #define scl_pin1 22
 
+// Define sensor refresh rate (IMU, Magnetron, GPS, PublishRate)
 Sensors sensors(20.0,20.0,1.0,20.0);
 
 void setup() {

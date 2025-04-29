@@ -15,6 +15,13 @@ struct IMUData
     double heading = 0;
 };
 
+struct PinData
+{
+    bool calibrate = false;
+    bool startup = false;
+    bool shutdown = false;
+};
+
 struct SensorData
 {
     IMUData dataIMU1;
@@ -24,6 +31,8 @@ struct SensorData
     int32_t latitude = 0;
     int32_t altitude = 0;
     u_int8_t numSatelites = 0;
+
+    PinData pinStates;
 };
 
 class Sensors
@@ -48,6 +57,10 @@ private:
     u_int32_t lastIMUupdate_ = 0;
     u_int32_t lastMagUpdate_ = 0;
     u_int32_t lastGNSSUpdate_ = 0;
+
+    u_int8_t pin1_ = 33;
+    u_int8_t pin2_ = 25;
+    u_int8_t pin3_ = 26;
 
     void initializeIMU(SparkFun_ISM330DHCX &ISM, TwoWire &Wire)
     {
@@ -179,8 +192,13 @@ public:
         initializeGNSS(GNSS_, Wire);
         Serial.println("GNSS Initialized");
 
+        pinMode(pin1_, INPUT_PULLUP);
+        pinMode(pin2_, INPUT_PULLUP);
+        pinMode(pin3_, INPUT_PULLUP);
+        Serial.println("Initialized input pins with internal pullup resistor");
+
         Serial.println("The data format will be pulished in the following order");
-        Serial.println("IMU1.accelDataX, IMU1.accelDataY, IMU1.accelDataZ, IMU1.gyroDataX, IMU1.gyroDataY, IMU1.gyroDataZ, Mag1.heading, GNSS.Latitude, GNSS.Longitude, GNSS.Altitude, GNSS.numSatelites");
+        Serial.println("IMU1.accelDataX, IMU1.accelDataY, IMU1.accelDataZ, IMU1.gyroDataX, IMU1.gyroDataY, IMU1.gyroDataZ, Mag1.heading, GNSS.Latitude, GNSS.Longitude, GNSS.Altitude, GNSS.numSatelites, Calibrate Command, Startup Command, ShutDown Command");
     };
 
     void readSensors()
@@ -207,6 +225,10 @@ public:
                 readGNSSData(GNSS_, sensorData_);
             }
         }
+
+        sensorData_.pinStates.calibrate = !digitalRead(pin1_);
+        sensorData_.pinStates.startup = !digitalRead(pin2_);
+        sensorData_.pinStates.shutdown = !digitalRead(pin3_);
     };
 
     void publishSensorData()
@@ -255,7 +277,15 @@ public:
             Serial.print(",");
             Serial.print(sensorData_.altitude);
             Serial.print(",");
-            Serial.println(sensorData_.numSatelites);
+            Serial.print(sensorData_.numSatelites);
+            Serial.print(",");
+
+            // Pin inputs
+            Serial.print(sensorData_.pinStates.calibrate);
+            Serial.print(",");
+            Serial.print(sensorData_.pinStates.startup);
+            Serial.print(",");
+            Serial.println(sensorData_.pinStates.shutdown);
         }
     };
 };
