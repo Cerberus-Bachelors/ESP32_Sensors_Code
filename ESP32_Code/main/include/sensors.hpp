@@ -290,4 +290,50 @@ public:
     };
 };
 
+class readSerialStatus
+{
+    private:
+    bool status1_ = false;
+    bool status2_ = false;
+    bool status3_ = false;
+
+    u_int8_t outputPin1_ = 12;
+    u_int8_t outputPin2_ = 14;
+    u_int8_t outputPin3_ = 27;
+
+    public:
+
+    void setupPins()
+    {
+        pinMode(outputPin1_, OUTPUT);
+        pinMode(outputPin2_, OUTPUT);
+        pinMode(outputPin3_, OUTPUT);
+    };
+
+    void readSerialData()
+    {
+        if (Serial.available()) {
+            String input = Serial.readStringUntil('\n'); // Read string until newline character
+            input.trim();
+
+            int firstComma = input.indexOf(',');
+            int secondComma = input.indexOf(',', firstComma + 1);
+
+            if (firstComma > 0 && secondComma > firstComma){
+                status1_ = input.substring(0, firstComma).toInt();
+                status2_ = input.substring(firstComma + 1, secondComma).toInt();
+                status3_ = input.substring(secondComma+ 1).toInt();
+            };
+
+        };
+    };
+
+    void setStatusPins()
+    {
+        digitalWrite(outputPin1_, status1_);
+        digitalWrite(outputPin2_, status2_);
+        digitalWrite(outputPin3_, status3_);
+    };
+};
+
 #endif
